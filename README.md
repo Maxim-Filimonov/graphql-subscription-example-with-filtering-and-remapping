@@ -2,9 +2,18 @@
 
 This example demonstrates a basic subscription operation in Apollo Server. [See the docs on subscriptions](https://www.apollographql.com/docs/apollo-server/data/subscriptions/)
 
-The example server exposes one subscription (`numberIncremented`) that returns an integer that's incremented on the server every second.
+The example server exposes one subscription (`numberIncremented`).
+Subscription accepts fromNumber argument which is used to filter subscription results.
 
-After you start up this server, you can test out running a subscription with the Apollo Studio Explorer by following the link from http://localhost:4000/graphql to the Apollo Sandbox. You might need to edit the Apollo Sandbox connection settings to select the [`graphql-ws` subscriptions implementation](https://www.apollographql.com/docs/studio/explorer/additional-features/#subscription-support). You'll see the subscription's value update every second.
+Number starts at 0 and is incremented using mutation:
+
+```graphql
+mutation {
+  increaseCurrentNumber
+}
+```
+
+After you start up this server, you can test out running a subscription with the Apollo Studio Explorer by following the link from http://localhost:4000/graphql to the Apollo Sandbox. You might need to edit the Apollo Sandbox connection settings to select the [`graphql-ws` subscriptions implementation](https://www.apollographql.com/docs/studio/explorer/additional-features/#subscription-support).
 
 ```graphql
 subscription IncrementingNumber {
